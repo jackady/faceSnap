@@ -1,0 +1,4 @@
+<div class="face-snap-card" [ngClass]="{snapped: faceSnap.isSnapped}">
+    <h2>{{ faceSnap.title | titlecase }}</h2>
+    <button (click)="navigateToFaceSnap()">View</button>
+</div>
