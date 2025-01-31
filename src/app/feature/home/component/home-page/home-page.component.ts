@@ -4,9 +4,7 @@ import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-home-page',
-    imports: [
-        FormsModule
-    ],
+    imports: [ FormsModule ],
     templateUrl: './home-page.component.html',
     styleUrl: './home-page.component.scss'
 })
@@ -14,14 +12,9 @@ export class HomePageComponent {
 
     userEmail: string = 'me@my-house.com';
 
-    constructor(private readonly router: Router) {
-    }
+    constructor(private readonly router: Router) {}
 
-    onNavigateTo(url: string): void {
-        this.router.navigateByUrl(url);
-    }
+    onNavigateTo(url: string): void { this.router.navigateByUrl(url); }
 
-    onSubmit(form: NgForm): void {
-        console.log(form.value);
-    }
+    onSubmit(form: NgForm): void { console.log(form.value); }
 }

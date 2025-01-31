@@ -6,8 +6,7 @@ import { AuthenticationService } from "../service/authentication.service";
 @Injectable()
 export class AuthenticationInterceptor implements HttpInterceptor {
 
-    constructor(private readonly authenticationService: AuthenticationService) {
-    }
+    constructor(private readonly authenticationService: AuthenticationService) {}
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const headers: HttpHeaders = new HttpHeaders().append(

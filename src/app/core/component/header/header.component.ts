@@ -1,21 +1,18 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
+import { faceSnapPath } from "../../../feature/face-snap/constants/face-snap-path.constant";
 
 @Component({
     selector: 'app-header',
-    imports: [
-        RouterLink,
-        RouterLinkActive
-    ],
+    imports: [ RouterLink, RouterLinkActive ],
     templateUrl: './header.component.html',
     styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
 
-    constructor(private readonly router: Router) {
-    }
+    protected readonly faceSnapPath = faceSnapPath;
 
-    onNavigateTo(url: string) {
-        this.router.navigateByUrl(url);
-    }
+    constructor(private readonly router: Router) {}
+
+    onNavigateToNewResource(): void { this.router.navigateByUrl(faceSnapPath.newResourcePath()); }
 }

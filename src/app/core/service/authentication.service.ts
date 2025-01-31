@@ -5,7 +5,5 @@ export class AuthenticationService {
 
     private readonly token: string = 'MyFakeToken';
 
-    public getToken(): string {
-        return this.token;
-    }
+    public getToken(): string { return this.token; }
 }
