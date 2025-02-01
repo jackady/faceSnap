@@ -4,16 +4,16 @@ import { ActivatedRoute } from "@angular/router";
 import { Observable } from "rxjs";
 
 import { FaceSnap } from "../../classes/face-snap.class";
-import { FaceSnapComponent } from "../../components/face-snap/face-snap.component";
+import { FaceSnapComponent } from "../../components/resource/face-snap.component";
 import { FaceSnapService } from "../../services/face-snap.service";
 
 @Component({
-    selector: 'app-page-single-view',
+    selector: 'app-page-face-snap-view',
     imports: [ FaceSnapComponent ],
-    templateUrl: './page-single-view.component.html',
-    styleUrl: './page-single-view.component.scss'
+    templateUrl: './page-face-snap-view.component.html',
+    styleUrl: './page-face-snap-view.component.scss'
 })
-export class PageSingleViewComponent implements OnInit {
+export class PageFaceSnapViewComponent implements OnInit {
 
     faceSnap$!: Observable<FaceSnap>;
 

@@ -1,7 +1,4 @@
-<div class="face-snap-card"
-     *ngIf="faceSnap$ | async as faceSnap"
-     [ngClass]="{ snapped: faceSnap.isSnapped }
-">
+<div class="face-snap-card" *ngIf="faceSnap$ | async as faceSnap" [ngClass]="{ snapped: faceSnap.isSnapped }">
     <h2>{{ faceSnap.title | titlecase }}</h2>
 
     @if (faceSnap.location) {

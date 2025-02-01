@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormsModule, NgForm } from "@angular/forms";
 import { Router } from '@angular/router';
 
+import { faceSnapPath } from "../../../face-snap/constants/face-snap-path.constant";
+
 @Component({
     selector: 'app-home-page',
     imports: [ FormsModule ],
@@ -14,7 +16,7 @@ export class HomePageComponent {
 
     constructor(private readonly router: Router) {}
 
-    onNavigateTo(url: string): void { this.router.navigateByUrl(url); }
+    onNavToFaceSnapListView(): void { this.router.navigateByUrl(faceSnapPath.resourcesPath()); }
 
     onSubmit(form: NgForm): void { console.log(form.value); }
 }

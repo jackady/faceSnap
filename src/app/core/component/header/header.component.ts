@@ -14,5 +14,5 @@ export class HeaderComponent {
 
     constructor(private readonly router: Router) {}
 
-    onNavigateToNewResource(): void { this.router.navigateByUrl(faceSnapPath.newResourcePath()); }
+    public onNavigateToNewResource(): void { this.router.navigateByUrl(faceSnapPath.newResourcePath()); }
 }

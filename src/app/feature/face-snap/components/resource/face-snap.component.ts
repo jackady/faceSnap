@@ -19,23 +19,31 @@ import { FaceSnapService } from "../../services/face-snap.service";
 export class FaceSnapComponent implements OnInit {
 
     @Input() faceSnap$!: Observable<FaceSnap>;
+    @Input() preview: boolean = false;
 
     snapButtonText!: string;
 
     constructor(private readonly faceSnapsService: FaceSnapService) {}
 
-    ngOnInit(): void { this.faceSnap$ = this.faceSnap$.pipe(this.refreshComponent()); }
+    ngOnInit(): void { this.faceSnap$ = this.faceSnap$.pipe(this.tapRefreshComponent()); }
 
     public onSnap(faceSnap: FaceSnap): void {
         faceSnap.isSnapped ? this.snap(faceSnap, SnapActionEnum.UNSNAP) : this.snap(faceSnap, SnapActionEnum.SNAP);
     }
 
     private snap(faceSnap: FaceSnap, snapAction: SnapActionEnum): void {
-        this.faceSnap$ = this.faceSnapsService.snapFaceSnap(faceSnap, snapAction).pipe(this.refreshComponent());
+        if (this.preview) {
+            this.refreshComponent(faceSnap.snap(snapAction))
+        } else {
+            this.faceSnap$ = this.faceSnapsService.snapFaceSnap(faceSnap, snapAction).pipe(this.tapRefreshComponent());
+        }
     }
 
-    private refreshComponent(): MonoTypeOperatorFunction<FaceSnap> {
-        return tap(faceSnap =>
-            this.snapButtonText = faceSnap.isSnapped ? SnapActionEnum.SNAP : SnapActionEnum.UNSNAP);
+    private tapRefreshComponent(): MonoTypeOperatorFunction<FaceSnap> {
+        return tap((faceSnap: FaceSnap) => this.refreshComponent(faceSnap));
+    }
+
+    private refreshComponent(faceSnap: FaceSnap): void {
+        this.snapButtonText = faceSnap.isSnapped ? SnapActionEnum.SNAP : SnapActionEnum.UNSNAP;
     }
 }
